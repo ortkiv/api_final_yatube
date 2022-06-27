@@ -3,7 +3,7 @@ from rest_framework import permissions
 
 class IsOwnerOrReadOnly(permissions.BasePermission):
     """Кастомный пермишен.
-    
+
     Разрешает не безопасные методы
     (POST, PUT, PATCH, DELETE)
     только для автора обьекта.
