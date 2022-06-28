@@ -53,7 +53,7 @@ python manage.py migrate
 python manage.py runserver
 ```
 
-linux
+os linux
 
 Клонировать репозиторий и перейти в него в командной строке:
 
