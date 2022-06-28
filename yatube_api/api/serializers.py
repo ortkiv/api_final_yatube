@@ -27,7 +27,6 @@ class PostSerializer(serializers.ModelSerializer):
         slug_field='username',
         read_only=True
     )
-    comments = CommentSerializer(many=True, required=False)
 
     class Meta:
         fields = '__all__'
@@ -59,11 +58,13 @@ class FollowSerializer(serializers.ModelSerializer):
         validators = [
             UniqueTogetherValidator(
                 queryset=Follow.objects.all(),
-                fields=['user', 'following']
+                fields=('user', 'following')
             )
         ]
 
     def validate(self, data):
+        print(self.context.get('request').user)
+        print(data.get('following'))
         if self.context.get('request').user == data.get('following'):
             raise serializers.ValidationError(
                 "Нельзя подписаться на самого себя!"
