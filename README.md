@@ -20,9 +20,9 @@ cd api_final_yatube
 ```
 
 Cоздать и активировать виртуальное окружение:
-
+os windows
 ```
-python -m venv env
+python -m venv venv
 ```
 
 ```
@@ -49,6 +49,36 @@ python manage.py migrate
 
 ```
 python manage.py runserver
+```
+linux
+```
+python3 -m venv env
+```
+
+```
+source env/bin/activate
+```
+
+Установить зависимости из файла requirements.txt:
+
+```
+python3 -m pip install --upgrade pip
+```
+
+```
+pip install -r requirements.txt
+```
+
+Выполнить миграции:
+
+```
+python3 manage.py migrate
+```
+
+Запустить проект:
+
+```
+python3 manage.py runserver
 ```
 ## Примеры запросов
 
