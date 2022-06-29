@@ -1,6 +1,6 @@
 from django.contrib.auth import get_user_model
 from django.shortcuts import get_object_or_404
-from rest_framework import filters, mixins, viewsets
+from rest_framework import filters, viewsets
 from rest_framework.pagination import LimitOffsetPagination
 from rest_framework.permissions import AllowAny, IsAuthenticatedOrReadOnly
 
@@ -9,6 +9,7 @@ from posts.models import Group, Post
 from .permissions import IsOwnerOrReadOnly
 from .serializers import (CommentSerializer, FollowSerializer, GroupSerializer,
                           PostSerializer, UserSerializer)
+from .viewsets import CreateListRetrieveViewSet
 
 User = get_user_model()
 
@@ -45,10 +46,7 @@ class CommentViewsSet(viewsets.ModelViewSet):
         serializer.save(author=self.request.user, post=post)
 
 
-class FollowCreateListRetrieveViewSet(mixins.CreateModelMixin,
-                                      mixins.ListModelMixin,
-                                      mixins.RetrieveModelMixin,
-                                      viewsets.GenericViewSet):
+class FollowViewSet(CreateListRetrieveViewSet):
     """Кастомный вьюсет.
 
     Для модели Follow

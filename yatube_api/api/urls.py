@@ -1,7 +1,7 @@
 from django.urls import include, path
 from rest_framework import routers
 
-from .views import (CommentViewsSet, FollowCreateListRetrieveViewSet,
+from .views import (CommentViewsSet, FollowViewSet,
                     GroupViewSet, PostViewSet, UserViewSet)
 
 router_v1 = routers.DefaultRouter()
@@ -9,7 +9,7 @@ router_v1.register(r'v1/posts', PostViewSet, basename='posts')
 router_v1.register(r'v1/groups', GroupViewSet, basename='groups')
 router_v1.register(
     r'v1/follow',
-    FollowCreateListRetrieveViewSet,
+    FollowViewSet,
     basename='follows'
 )
 router_v1.register(
